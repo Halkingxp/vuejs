@@ -29,3 +29,32 @@
   color: #42b983;
 }
 </style>
+
+<script>
+import Fingerprint2 from 'fingerprintjs2';
+export default {
+  data(){
+    return{
+
+    }
+  },
+  created(){
+    console.log("created");
+    if (window.requestIdleCallback) {
+      requestIdleCallback(function () {
+          Fingerprint2.get(function (components) {
+            console.log(components) // an array of components: {key: ..., value: ...}
+          })
+      })
+    } else {
+      setTimeout(function () {
+          Fingerprint2.get(function (components) {
+            console.log(components) // an array of components: {key: ..., value: ...}
+          })  
+      }, 500)
+    }
+  },
+
+}
+</script>
+

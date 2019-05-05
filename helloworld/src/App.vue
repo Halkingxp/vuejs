@@ -35,7 +35,7 @@ import Fingerprint2 from 'fingerprintjs2';
 export default {
   data(){
     return{
-
+      a:"app data a",
     }
   },
   created(){
@@ -43,7 +43,7 @@ export default {
     if (window.requestIdleCallback) {
       requestIdleCallback(function () {
           Fingerprint2.get(function (components) {
-            console.log(components) // an array of components: {key: ..., value: ...}
+            console.log(components) // an array of components: y{key: ..., value: ...}
           })
       })
     } else {
@@ -53,8 +53,17 @@ export default {
           })  
       }, 500)
     }
-  },
+    // let aaa = "aaaa";
+    let func = ()=>{
+      this.a = "change a";
 
+    };
+    func();
+  },
+  mounted(){
+    console.log("mouted");
+    console.log(this.a);
+  },
 }
 </script>
 
